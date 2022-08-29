@@ -6,6 +6,10 @@ var commentText = document.getElementsByTagName("textarea")[0];
 var commentForm = document.getElementById("commentForm");
 var submitButton = document.getElementById("submitButton");
 
+// empty the comment text after post
+
+commentText.value = "";
+
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
         let commentId = e.target.getAttribute("comment_id");
