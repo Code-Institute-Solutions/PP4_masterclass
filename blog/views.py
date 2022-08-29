@@ -51,8 +51,8 @@ def post_detail(request, slug, *args, **kwargs):
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.post = post
-            commented = True
             comment.save()
+            messages.add_message(request, messages.SUCCESS, 'Comment awaiting moderation.')
         else:
             comment_form = CommentForm()
     else:
@@ -64,7 +64,6 @@ def post_detail(request, slug, *args, **kwargs):
         {
             "post": post,
             "comments": comments,
-            "commented": commented,
             "comment_count": comment_count,
             "liked": liked,
             "comment_form": comment_form
